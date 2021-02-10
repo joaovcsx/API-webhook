@@ -20,19 +20,6 @@ class ContactModule(BaseHandler):
         print('caiuu')
         request_dict = self.request.POST
         print(request_dict)
-        print('\n\n\n')
-        # print(request_dict)
-        # file_item = request_dict.get('file')
-        # print(file_item)
-        # values = map(request_dict.get, 'file')
-        # print('\n\n\n')
-        # print(values)
-        for key, value in request_dict.iteritems():
-            if key == 'file':
-                print(value)
-                print(value.type)
-                print(value.filename)
-                # print(value.value)
         self.response_send(204)
 
 

@@ -44,6 +44,11 @@ class BaseHandler(webapp2.RequestHandler):
             header_exposed=header_exposed,
             status_code=status_code)
     
+    def logging_request(self):
+        """Logging request"""
+        print(self.request)
+        print('\n ___________________________________________________________ //')
+
     def request_json(self, key=None):
         """Get request body as json"""
         try:
@@ -98,3 +103,6 @@ class BaseHandler(webapp2.RequestHandler):
             return json.loads(response.content)
         except Exception as error:
             return response
+    
+    def log_request_post(self):
+        print(self.request.POST)

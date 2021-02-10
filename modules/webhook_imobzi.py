@@ -13,13 +13,12 @@ HEADERS = {
 }
 
 API = 'https://api.imobzi.app/v1'
-NGROK_URL = 'https://56e72f38d6d1.ngrok.io/v1'
+NGROK_URL = 'https://9931bf989512.ngrok.io/v1'
 
 class WebhookHandlers(BaseHandler):
     
     def post(self):
-        params = self.request_json()
-        print(params)
+        self.logging_request()
 
 class WebhookWithImobzi(BaseHandler):
 
@@ -27,9 +26,7 @@ class WebhookWithImobzi(BaseHandler):
         """Create webhook"""
         try:
             data = {
-                'events': ['lead_created', 'lead_updated', 'lead_deleted', 
-                    'contact_created', 'contact_updated', 'contact_deleted',
-                    'property_created', 'property_updated', 'property_deleted'],
+                'events': ['lead_updated', 'contact_updated', 'property_updated'],
                 'url': NGROK_URL + '/webhook/imobzi'
             }
             url = API + '/webhooks'
@@ -45,7 +42,8 @@ class WebhookWithImobzi(BaseHandler):
                 'events': ['lead_created', 'lead_updated', 'lead_deleted', 
                     'contact_created', 'contact_updated', 'contact_deleted',
                     'property_created', 'property_updated', 'property_deleted'],
-                'url': NGROK_URL + '/webhook/imobzi'
+                'url': NGROK_URL + '/webhook/imobzi',
+                'authorization': 'X-Imobzi-Authorization-Test'
             }
             url = API + '/webhook/{}'
             request = requests.post(url.format(webhook_id), json=data, headers=HEADERS)
@@ -78,10 +76,18 @@ class WebhookWithImobzi(BaseHandler):
         except Exception as error:
             self.logging_error(error)
 
-    def delte_all_webhook(self, webhooks_ids):
+    def delete_all_webhook(self, webhooks_ids):
         webhooks = self.get_all_webhook()
         for webhook in webhooks:
             if webhook['db_id'] not in webhooks_ids:
                 self.delete_webhook(webhook['db_id'])
     
+class PropertyPhotos(BaseHandler):
     
+    def add_photos(self, property_id, data):
+        try:
+            url = API + '/properties/{}/photos'
+            request = requests.post('http://127.0.0.1:8050/v1', headers=HEADERS, data=data)
+            self.logging_response(request)
+        except Exception as error:
+            self.logging_error(error)
