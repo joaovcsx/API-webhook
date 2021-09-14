@@ -40,7 +40,7 @@ class BaseHandler(webapp2.RequestHandler):
         """
         status_code = self.get_error_code(error_exception)
         self.response_send(
-            {'message': self.get_error_message(error_exception)},
+            {'error': self.get_error_message(error_exception)},
             header_exposed=header_exposed,
             status_code=status_code)
     

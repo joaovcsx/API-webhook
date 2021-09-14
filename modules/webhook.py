@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import requests
 from base_handler import BaseHandler
 
 class Webhook(BaseHandler):

@@ -5,16 +5,16 @@ import json
 sys.path.append('modules')
 from paste import httpserver
 from base_handler import BaseHandler
-from webhook_imobzi import WebhookHandlers, WebhookWithImobzi, PropertyPhotos
+from webhook_imobzi import WebhookHandlers, WebhookWithImobzi
 from contact_utils import ContactModule
 from webhook import Webhook
-from requests_toolbelt.multipart.encoder import MultipartEncoder
 
 class Index(BaseHandler):
     """Index"""
 
     def get(self):
         """Get App Index"""
+        # WebhookWithImobzi().get_devolus()
         # WebhookWithImobzi().create_webhook()
         WebhookWithImobzi().update_webhook('6403758877573120')
         # WebhookWithImobzi().update_webhook('4618263889707008')
@@ -26,7 +26,6 @@ class Index(BaseHandler):
 
     def post(self):
         self.log_request_post()
-
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/v1',
