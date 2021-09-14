@@ -26,7 +26,7 @@ class ContactModule(BaseHandler):
     @staticmethod
     def get_contact():
         # headers = {
-        #     'Accept': 'application/json', 
+        #     'Accept': 'application/json',
         #     'Content-type':'application/json',
         #     'X-Imobzi-Secret': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aGlyZF9wYXJ0eV9hcHBfaWQiOjU4NTk0MDMyMSwiY3JlYXRlZF9hdCI6IjIwMjAtMDctMjhUMTc6NDk6NDQuOTUzMjcyWiIsImlzX3RoaXJkX3BhcnR5X2FjY2VzcyI6dHJ1ZX0.BBW19UzLkNVYqDsm4-divx6o6A2aV4m4DQiiRIKE-8w'}
         # contact = requests.get('https://api.imobzi.app/v1/person/6722714794459136', headers=headers)

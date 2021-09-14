@@ -7,7 +7,7 @@ from base_handler import BaseHandler
 
 
 HEADERS = {
-    'Accept': 'application/json', 
+    'Accept': 'application/json',
     'Content-type':'application/json',
     'X-Imobzi-Secret': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aGlyZF9wYXJ0eV9hcHBfaWQiOjcwNjYyNjk3NywiY3JlYXRlZF9hdCI6IjIwMjEtMDctMTlUMTg6MDM6NDEuNDk1NDM1WiIsImlzX3RoaXJkX3BhcnR5X2FjY2VzcyI6dHJ1ZX0.2qXucHP9hVJGbLyMLgEtOF9CH6FQmOmhQBDc5ykOghs'
 }
@@ -16,17 +16,17 @@ API = 'https://api.imobzi.app/v1'
 NGROK_URL = 'https://f299a85d700c.ngrok.io/v1'
 # API = 'http://localhost:8080/v1'
 # NGROK_URL = 'http://localhost:8050/v1'
-EVENTS = ['lead_created', 'lead_updated', 'lead_deleted', 
+EVENTS = ['lead_created', 'lead_updated', 'lead_deleted',
           'contact_created', 'contact_updated', 'contact_deleted',
           'property_created', 'property_updated', 'property_deleted']
 
 class WebhookHandlers(BaseHandler):
-    
+
     def get(self):
         self.logging_request()
 
     def post(self):
-        self.logging_request()    
+        self.logging_request()
 
 class WebhookWithImobzi(BaseHandler):
 
@@ -36,7 +36,7 @@ class WebhookWithImobzi(BaseHandler):
         headers = {
             'User-Agent': 'python-requests/2.17.3',
             'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate',
-            'Authorization': 'Bearer 395a92d0-d82d-487f-82a9-652a375db39a', 
+            'Authorization': 'Bearer 395a92d0-d82d-487f-82a9-652a375db39a',
             'Connection': 'keep-alive'
         }
         request = requests.get(url, headers=headers)

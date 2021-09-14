@@ -32,20 +32,20 @@ app = webapp2.WSGIApplication([
         handler=Index,
         name='home'),
     webapp2.Route(
-        '/v1/contact/<person_id>', 
+        '/v1/contact/<person_id>',
         handler=ContactModule,
         name='home'),
     webapp2.Route(
-        '/v1/webhook/imobzi', 
+        '/v1/webhook/imobzi',
         handler=WebhookHandlers,
         name='webhookImobzi'),
     webapp2.Route(
-        '/v1/imobzi/files', 
+        '/v1/imobzi/files',
         handler=ContactModule,
         name='imobzi-files',
         methods=['GET', 'POST', 'OPTIONS']),
     webapp2.Route(
-        '/v1/webhhok/pjbank', 
+        '/v1/webhhok/pjbank',
         handler=Webhook,
         name='imobzi-files'),
 ], debug=True)

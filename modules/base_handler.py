@@ -43,7 +43,7 @@ class BaseHandler(webapp2.RequestHandler):
             {'error': self.get_error_message(error_exception)},
             header_exposed=header_exposed,
             status_code=status_code)
-    
+
     def logging_request(self):
         """Logging request"""
         print(self.request)
@@ -84,7 +84,7 @@ class BaseHandler(webapp2.RequestHandler):
             if isinstance(error_code, int):
                 return error[1]
         return 500
-    
+
     def logging_error(self, error):
         print('\nerror:')
         print(error)
@@ -103,6 +103,6 @@ class BaseHandler(webapp2.RequestHandler):
             return json.loads(response.content)
         except Exception as error:
             return response
-    
+
     def log_request_post(self):
         print(self.request.POST)

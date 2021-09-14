@@ -17,7 +17,7 @@ class Webhook(BaseHandler):
         request_dict = self.request_json()
         print(request_dict)
         print('\n')
-    
+
     def delete(self):
         print('\nDELETE')
         request_dict = self.request.GET
