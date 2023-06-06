@@ -47,6 +47,14 @@ class BaseHandler(webapp2.RequestHandler):
     def logging_request(self):
         """Logging request"""
         print(self.request)
+        import urllib
+        request = self.request.body
+        params = {}
+        if request:
+            [params.update({str(k.split('=')[0]): k.split('=')[1]}) for k
+                in urllib.unquote_plus(request).split('&') if
+                len(k.split('=')) > 1]
+        print params
         print('\n ___________________________________________________________ //')
 
     def request_json(self, key=None):

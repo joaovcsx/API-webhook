@@ -40,7 +40,7 @@ app = webapp2.WSGIApplication([
         handler=WebhookHandlers,
         name='webhookImobzi'),
     webapp2.Route(
-        '/v1/imobzi/files',
+        '/v1/imobzi/files/<person_id>',
         handler=ContactModule,
         name='imobzi-files',
         methods=['GET', 'POST', 'OPTIONS']),

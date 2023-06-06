@@ -9,7 +9,7 @@ class ContactModule(BaseHandler):
     def get(self, person_id=None):
         """Show person"""
         try:
-            if int(person_id) == 1:
+            if person_id and int(person_id) == 1:
                 self.response_send(self.get_contact(), 204)
             else:
                 self.response_error(Exception('Bad Request', 400))
